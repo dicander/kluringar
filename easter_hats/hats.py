@@ -10,14 +10,8 @@ def index_sum(others):
 def guess(player, others):
 #print("player", player, "guessing on", others)
 	count = sum(others)
-	if count == 0:
-		return 1
-	if count==2:
-		return 1
-	if count==4:
-		return 0
-	if count==6:
-		return 0
+	if count % 2==0:
+		return count < 3
 	return None
 	
 
@@ -47,5 +41,5 @@ def main():
 				print("unfortunately, nobody guessed!")
 	print("correct answers:", correct)
 	print("incorrect answers:", incorrect)
-	print("{0:.2f}% correct answers.".format(100*correct/128))
+	print("{0:.4f}% correct answers.".format(100*correct/128))
 main()
