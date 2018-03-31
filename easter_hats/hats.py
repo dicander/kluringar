@@ -1,12 +1,5 @@
 import itertools
 
-def index_sum(others):
-	answer = 0
-	for index, current in enumerate(others):
-		if current == 1:
-			answer += index
-	return answer
-
 def guess(player, others):
 #print("player", player, "guessing on", others)
 	count = sum(others)
