@@ -2,9 +2,13 @@ import itertools
 
 def guess(player, others):
 #print("player", player, "guessing on", others)
-    count = sum(others)
-    if count % 2==0:
-        return count < 3
+    count = sum(others[:2])
+    if player > 2:
+        return None
+    if count==0:
+        return True
+    elif count==2:
+        return False
     return None
     
 
