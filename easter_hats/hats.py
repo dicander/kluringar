@@ -1,6 +1,6 @@
 import itertools
 
-N_PLAYERS = 5
+N_PLAYERS = 7
 def bit_distance(first, second):
     difference = 0
     for index, value in enumerate(first):
