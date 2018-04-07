@@ -1,27 +1,25 @@
 import itertools
 
-def guess(player, others):
-#print("player", player, "guessing on", others)
-    count = sum(others[:2])
-    if player > 2:
-        return None
-    if count==0:
-        return True
-    elif count==2:
-        return False
+from targets import create_targets
+
+def guess(player, fail_these, others):
+    if others[:player]+(1,)+others[player:] in fail_these:
+        return 0
+    elif others[:player]+(0,)+others[player:] in fail_these:
+        return 1
     return None
-    
 
 
 def main():
     correct = 0
     incorrect = 0
     nobody_guessed = 0
+    fail_these = create_targets()
     for current in itertools.product(range(2),repeat = 7):
         print(current, sum(current))
         win_condition = False # At least one player is right, no-one is wrong
         for player in range(7):
-            player_guess = guess(player, current[:player]+current[player+1:])
+            player_guess = guess(player, fail_these, current[:player]+current[player+1:])
             if player_guess != None:
                 if player_guess == current[player]:
                     print("player {} was right".format(player))
